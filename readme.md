@@ -5,18 +5,22 @@
 ## **Table of contents**
 
 - [About](#about)
+- [Important Note](#important-note)
 - [Motivation](#motivation)
 - [How it works](#how-it-works)
 - [How to use it](#how-to-use-it)
 - [List of new methods](#list-of-new-methods)
 - [DTN Configuration](#dtn-configuration)
 - [Installation](#installation)
-- [Important Note](#important-note)
 - [License](#license)
 
 ## **About**
 
 **TL;DR:** This project is a wrapper for [Mongoose](https://mongoosejs.com/), that adds support for making your application delay tolerant.
+
+## **Important Note**
+
+This is still being in development, it's published for testing purposes.
 
 ## **Motivation**
 
@@ -213,10 +217,6 @@ Or if you use `yarn`:
 ```
 yarn remove mongoose
 ```
-
-## **Important Note**
-
-This is still being in development, it's only published because I wanted to test it by installing it with yarn on another project.
 
 ## **License**
 
