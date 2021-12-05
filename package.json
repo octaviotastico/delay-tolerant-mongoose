@@ -1,7 +1,7 @@
 {
   "name": "delay-tolerant-mongoose",
   "description": "A plug and play mongoose wrapper, that allows your app to work over DTNs (Delay Tolerant Networks).",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "author": "Octavio Percivaldi <octavio.percivaldi@mi.unc.edu.ar> (https://github.com/octaviotastico/)",
   "license": "MIT",
   "keywords": [
@@ -19,8 +19,6 @@
   "dependencies": {
     "mongoose": "^6.0.12",
     "python-struct": "^1.1.3",
-    "socket.io": "^4.2.0",
-    "socket.io-client": "^4.2.0",
     "uuid": "^8.3.2"
   },
   "scripts": {
