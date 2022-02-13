@@ -36,9 +36,9 @@ It's quite simple really. The first thing you need to do, is having the configur
 
 After configuring this module (you can read about how to do that [here](#dtn-configuration)), what it basically does is that:
 
-1. First, it opens a TCP Socket Server in the configured host and port (`DTN_HOST` and `DTN_PORT`) to listen to the local DTN Node in order to get new incoming packages (i.e: non-local updates in the database).
+1. First, it opens a TCP Socket Server in the configured host and port (`DTN_HOST` and `DTN_PORT`) to listen to μD3TN in order to get new incoming packages (i.e: non-local updates in the database).
 
-2. When you update the database (i.e: you create/edit/delete documents), the new methods update the local database, but they also open a client connection to the local DTN Node and send the new changes to all the EIDs, that is, for all addresses where non-local databases are (configured in `EID_LIST`).
+2. When you update the database (i.e: you create/edit/delete documents), the new methods update the local database, but they also open a client connection to μD3TN and send the new changes to all the EIDs, that is, for all addresses where non-local databases are (configured in `EID_LIST`).
 
 This two steps are almost all you need in order to update your non-local databases spread across a DTN. There are a few steps missing, like the serialization and deserialization of the bundles before sending them, but that's only details.
 
@@ -50,9 +50,9 @@ This diagram tries to explain better how this project would work:
 
 As you can see on the left, there is an ordinary application: users run the frontend (Frontend A1, A2, A3), while your server runs the backend (Backend 1), and the backend connects to the database. Nothing special.
 
-What's interesting here, is that this database, in addition to being a normal database, it also connects to a DTN Node (in this case, the DTN Node 1) through the AAP Interface. That node is an instance of [µD3TN](https://gitlab.com/d3tn/ud3tn) running on a satellite.
+What's interesting here, is that this database, in addition to being a normal database, it also connects to a Bundle Protocol Node (in this case, the Bundle Protocol Node 1) through the AAP Interface. That node is an instance of [µD3TN](https://gitlab.com/d3tn/ud3tn) running on a satellite.
 
-The arrow that connects the DT-DB to the DTN Node 1 represents the exchange of data between those two. Is a round trip arrow, and not a one way arrow because you send your local updates from Backend 1 (let's say it is the local backend running here on Earth) but also you receive the non-local updates from the Backend 2 (let's say it is the backend running on Mars).
+The arrow that connects the DT-DB to the Bundle Protocol Agent 1 represents the exchange of data between those two. Is a round trip arrow, and not a one way arrow because you send your local updates from Backend 1 (let's say it is the local backend running here on Earth) but also you receive the non-local updates from the Backend 2 (let's say it is the backend running on Mars).
 
 That exchange of data is made automatically by this module, so the only thing you have to worry about is to code your own application.
 
@@ -123,7 +123,7 @@ As you can see, the only things that changed were the import and the new `config
 
 You have to call this method in order to configure your DTN variables. You can call it after or before the `mongoose.connect`.
 
-What that function does is to configure the local DTN Node and starts a listener in `DTN_HOST`:`DTN_PORT` address, in order to update the local database in case any of the non-local backends adds new data to their databases.
+What that function does is to configure μD3TN and starts a listener in `DTN_HOST`:`DTN_PORT` address, in order to update the local database in case any of the non-local backends adds new data to their databases.
 
 To understand better the configuration object, you can go to the [DTN Configuration](#dtn-configuration) section.
 
@@ -182,11 +182,11 @@ The list of the new delay tolerant methods is:
 
 - **AGENT_ID**: The Agent ID (the last part of the EID), to register your application.
 
-  - **Example**: If your local DTN node address is `dtn://node-name.dtn/` and you decide to register your application as "myApp" (i.e. Agent ID = "myApp"), then your endpoint would be: `dtn://node-name.dtn/myApp`.
+  - **Example**: If the address of the μD3TN instance is `dtn://node-name.dtn/` and you decide to register your application as "myApp" (i.e. Agent ID = "myApp"), then your endpoint would be: `dtn://node-name.dtn/myApp`.
 
-- **DTN_HOST**: This is used to configure the local DTN Node to forward the messages to this host.
+- **DTN_HOST**: This is the host of the μD3TN AAP interface. It is used to forward the messages in order to update the other instances of the database.
 
-- **DTN_PORT**: This is used to configure the local DTN Node to forward the messages to this port.
+- **DTN_PORT**: This is the port of the μD3TN AAP interface. It is used to forward the messages in order to update the other instances of the database.
 
 - **EID_LIST**: The list of nodes of the DTN (the Endpoint Identifiers) where your other databases are located. It's needed in order to update them when you create/edit/delete a document locally.
 
