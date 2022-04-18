@@ -14,9 +14,6 @@
     "mongoose",
     "database"
   ],
-  "prettier":{
-    "printWidth": 120
-  },
   "repository": "octaviotastico/delay-tolerant-mongoose",
   "main": "./lib/index.js",
   "dependencies": {
