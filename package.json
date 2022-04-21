@@ -4,6 +4,7 @@
   "version": "1.0.20",
   "author": "Octavio Percivaldi <octavio.percivaldi@mi.unc.edu.ar> (https://github.com/octaviotastico/)",
   "license": "MIT",
+  "type": "module",
   "keywords": [
     "db",
     "dtn",
