@@ -1,7 +1,7 @@
 {
   "name": "delay-tolerant-mongoose",
   "description": "A plug and play mongoose wrapper, that allows your app to work over DTNs (Delay Tolerant Networks).",
-  "version": "1.0.20",
+  "version": "2.0.0",
   "author": "Octavio Percivaldi <octavio.percivaldi@mi.unc.edu.ar> (https://github.com/octaviotastico/)",
   "license": "MIT",
   "type": "module",
@@ -23,7 +23,31 @@
     "python-struct": "^1.1.3",
     "uuid": "^8.3.2"
   },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.17.9",
+    "@types/jest": "^27.4.1",
+    "babel-jest": "^27.5.1",
+    "babel-plugin-syntax-class-properties": "^6.13.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "express": "^4.17.3",
+    "jest": "^27.5.1",
+    "mongodb-memory-server": "^8.5.1",
+    "supertest": "^6.2.2",
+    "ts-jest": "^27.1.4",
+    "typescript": "^4.6.3"
+  },
   "scripts": {
-    "start": "node ./lib/index.js"
+    "start": "node ./lib/index.js",
+    "test": "jest --watchAll --coverage --verbose --silent --runInBand"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ]
   }
 }
