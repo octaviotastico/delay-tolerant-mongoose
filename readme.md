@@ -46,7 +46,7 @@ You can also copy this idea and create new wrappers for other common used Javasc
 
 This diagram tries to explain better how this project would work:
 
-![Diagram](assets/diagram.png)
+![Diagram](assets/delay_tolerant_mongoose.png)
 
 As you can see on the left, there is an ordinary application: users run the frontend (Frontend A1, A2, A3), while your server runs the backend (Backend 1), and the backend connects to the database. Nothing special.
 
